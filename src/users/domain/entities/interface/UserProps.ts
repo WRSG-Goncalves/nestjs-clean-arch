@@ -1,7 +1,7 @@
-export type UserProps = {
+export interface UserProps {
   name: string
   email: string
   password: string
   createdAt?: Date
-  updateAt?: Date
+  updatedAt?: Date
 }
