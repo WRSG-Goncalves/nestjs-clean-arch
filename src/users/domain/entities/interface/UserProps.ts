@@ -3,5 +3,4 @@ export interface UserProps {
   email: string
   password: string
   createdAt?: Date
-  updatedAt?: Date
 }

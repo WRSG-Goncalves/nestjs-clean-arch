@@ -12,7 +12,6 @@ export class UserEntity extends Entity<UserProps> {
 
     super(props, id)
     this.props.createdAt = this.props.createdAt ?? new Date()
-    this.props.updatedAt = new Date()
   }
 
   update(value: string): void {
@@ -49,13 +48,10 @@ export class UserEntity extends Entity<UserProps> {
     return this.props.createdAt
   }
 
-  get updateAt() {
-    return this.props.updatedAt
-  }
-
   static validate(props: UserProps) {
     const validator = UserValidatorFactory.create()
     const isValid = validator.validate(props)
+
     if (!isValid) {
       throw new EntityValidationError(validator.errors)
     }

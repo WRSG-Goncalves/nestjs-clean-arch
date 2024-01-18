@@ -118,22 +118,6 @@ describe('UserValidator unit tests', () => {
     ])
   })
 
-  it('Invalidation cases for updatedAt field', () => {
-    let isValid = sut.validate({ ...props, updatedAt: 10 as any })
-    expect(isValid).toBeFalsy()
-    expect(sut.errors['updatedAt']).toStrictEqual([
-      'updatedAt must be a Date instance',
-    ])
-
-    isValid = sut.validate({ ...props, updatedAt: '2023' as any })
-    expect(isValid).toBeFalsy()
-    console.log(sut.errors['updatedAt'])
-
-    expect(sut.errors['updatedAt']).toStrictEqual([
-      'updatedAt must be a Date instance',
-    ])
-  })
-
   // it('Valid case for user rules', () => {
   //   const isValid = sut.validate(props)
   //   expect(isValid).toBeTruthy()
