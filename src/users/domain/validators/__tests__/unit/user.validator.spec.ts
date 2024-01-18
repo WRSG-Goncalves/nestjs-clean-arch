@@ -1,6 +1,10 @@
 import { UserDataBuilder } from '../../../entities/__tests__/testing/helpers/user-data-builder'
 import { UserProps } from '../../../entities/interface/UserProps'
-import { UserValidator, UserValidatorFactory } from '../../user.validator'
+import {
+  //UserRules,
+  UserValidator,
+  UserValidatorFactory,
+} from '../../user.validator'
 
 let sut: UserValidator
 let props: UserProps
