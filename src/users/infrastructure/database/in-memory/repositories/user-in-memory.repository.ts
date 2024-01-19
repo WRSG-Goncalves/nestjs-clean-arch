@@ -8,6 +8,20 @@ export class UserInMemoryRepository
   extends InMemorySearchableRepository<UserEntity>
   implements UserRepository
 {
+  protected applyFilter(
+    items: UserEntity[],
+    filter: string,
+  ): Promise<UserEntity[]> | null {
+    const entities: UserEntity[] = []
+    console.log(items.length)
+    console.log(filter)
+    try {
+      entities
+    } catch (error) {
+      return null
+    }
+  }
+
   async findByEmail(email: string): Promise<UserEntity> {
     const entity = this.items.find(item => item.email === email)
     if (!entity) {
