@@ -1,7 +1,8 @@
-import { Entity } from '../../../shared/domain/entities/entity'
-import { EntityValidationError } from '../../../shared/domain/errors/validation-error'
-import { UserValidatorFactory } from '../validators/user.validator'
+import { Entity } from '@/shared/domain/entities/entity'
+import { EntityValidationError } from '@/shared/domain/errors/validation-error'
 import { UserProps } from './interface/UserProps'
+
+import { UserValidatorFactory } from '../validators/user.validator'
 
 export class UserEntity extends Entity<UserProps> {
   constructor(
