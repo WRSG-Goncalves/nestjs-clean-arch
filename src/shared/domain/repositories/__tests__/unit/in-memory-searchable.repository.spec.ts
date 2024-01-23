@@ -34,9 +34,7 @@ describe('InMemoryRepository unit tests', () => {
 
   describe('applyFilter method', () => {
     it('should no filter items when filter param is null', async () => {
-      const items = [
-        new StubEntity({ name: 'name value', price: 50 }, undefined),
-      ]
+      const items = [new StubEntity({ name: 'name value', price: 50 }, null)]
       const spyFilterMethod = jest.spyOn(items, 'filter')
       const itemsFiltered = await sut['applyFilter'](items, null)
       expect(itemsFiltered).toStrictEqual(items)
@@ -45,9 +43,9 @@ describe('InMemoryRepository unit tests', () => {
 
     it('should filter using a filter param', async () => {
       const items = [
-        new StubEntity({ name: 'test', price: 50 }, undefined),
-        new StubEntity({ name: 'TEST', price: 50 }, undefined),
-        new StubEntity({ name: 'fake', price: 50 }, undefined),
+        new StubEntity({ name: 'test', price: 50 }, null),
+        new StubEntity({ name: 'TEST', price: 50 }, null),
+        new StubEntity({ name: 'fake', price: 50 }, null),
       ]
       const spyFilterMethod = jest.spyOn(items, 'filter')
       let itemsFiltered = await sut['applyFilter'](items, 'TEST')
