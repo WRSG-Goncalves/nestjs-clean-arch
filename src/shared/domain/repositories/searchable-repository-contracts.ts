@@ -21,7 +21,7 @@ export type SearchResultProps<E extends Entity, Filter> = {
   filter: Filter | null
 }
 
-export class SearchParams {
+export class SearchParams<Filter = string> {
   protected _page: number
   protected _perPage = 15
   protected _sort: string | null
