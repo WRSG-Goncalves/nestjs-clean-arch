@@ -58,3 +58,5 @@ export class UserEntity extends Entity<UserProps> {
     }
   }
 }
+
+export { UserProps }
