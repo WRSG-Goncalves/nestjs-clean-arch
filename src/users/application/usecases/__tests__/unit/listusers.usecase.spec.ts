@@ -52,12 +52,12 @@ describe('ListUsersUseCase unit tests', () => {
     })
   })
 
-  it('should return the users ordered by createdAt', async () => {
-    const createdAt = new Date()
+  it('should return the users ordered by created_at ', async () => {
+    const created_at  = new Date()
     const items = [
-      new UserEntity(UserDataBuilder({ createdAt })),
+      new UserEntity(UserDataBuilder({ created_at  })),
       new UserEntity(
-        UserDataBuilder({ createdAt: new Date(createdAt.getTime() + 1) }),
+        UserDataBuilder({ created_at: new Date(created_at.getTime() + 1) }),
       ),
     ]
     repository.items = items

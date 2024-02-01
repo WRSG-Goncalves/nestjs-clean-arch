@@ -28,7 +28,7 @@ describe('UsersController unit tests', () => {
       name: 'Jhon Doe',
       email: 'a@a.com',
       password: '1234',
-      createdAt: new Date(),
+      created_at: new Date(),
     }
   })
 

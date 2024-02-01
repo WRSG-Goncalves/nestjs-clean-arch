@@ -60,8 +60,8 @@ describe('UsersController e2e tests', () => {
   })
 
   describe('GET /users', () => {
-    it('should return the users ordered by createdAt', async () => {
-      const createdAt = new Date()
+    it('should return the users ordered by created_at', async () => {
+      const created_at  = new Date()
       const entities: UserEntity[] = []
       const arrange = Array(3).fill(UserDataBuilder({}))
       arrange.forEach((element, index) => {
@@ -69,7 +69,7 @@ describe('UsersController e2e tests', () => {
           new UserEntity({
             ...element,
             email: `a${index}@a.com`,
-            createdAt: new Date(createdAt.getTime() + index),
+            created_at : new Date(created_at .getTime() + index),
           }),
         )
       })
@@ -98,8 +98,8 @@ describe('UsersController e2e tests', () => {
       })
     })
 
-    it('should return the users ordered by createdAt', async () => {
-      const createdAt = new Date()
+    it('should return the users ordered by created_at', async () => {
+      const created_at  = new Date()
       const entities: UserEntity[] = []
       const arrange = ['test', 'a', 'TEST', 'b', 'TeSt']
       arrange.forEach((element, index) => {

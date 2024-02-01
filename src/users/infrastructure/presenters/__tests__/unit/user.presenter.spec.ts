@@ -3,13 +3,13 @@ import { UserCollectionPresenter, UserPresenter } from '../../user.presenter'
 import { PaginationPresenter } from '@/shared/infrastructure/presenters/pagination.presenter'
 
 describe('UserPresenter unit tests', () => {
-  const createdAt = new Date()
+  const created_at = new Date()
   const props = {
     id: 'e71c52a2-9710-4a96-a08e-144af4209b5d',
     name: 'test name',
     email: 'a@a.com',
     password: 'fake',
-    createdAt,
+    created_at,
   }
   let sut: UserPresenter
 
@@ -22,7 +22,7 @@ describe('UserPresenter unit tests', () => {
       expect(sut.id).toEqual(props.id)
       expect(sut.name).toEqual(props.name)
       expect(sut.email).toEqual(props.email)
-      expect(sut.createdAt).toEqual(props.createdAt)
+      expect(sut.created_at).toEqual(props.created_at)
     })
   })
 
@@ -32,19 +32,19 @@ describe('UserPresenter unit tests', () => {
       id: 'e71c52a2-9710-4a96-a08e-144af4209b5d',
       name: 'test name',
       email: 'a@a.com',
-      createdAt: createdAt.toISOString(),
+      created_at: created_at.toISOString(),
     })
   })
 })
 
 describe('UserCollectionPresenter unit tests', () => {
-  const createdAt = new Date()
+  const created_at = new Date()
   const props = {
     id: 'e71c52a2-9710-4a96-a08e-144af4209b5d',
     name: 'test name',
     email: 'a@a.com',
     password: 'fake',
-    createdAt,
+    created_at,
   }
 
   describe('constructor', () => {
@@ -84,7 +84,7 @@ describe('UserCollectionPresenter unit tests', () => {
           id: 'e71c52a2-9710-4a96-a08e-144af4209b5d',
           name: 'test name',
           email: 'a@a.com',
-          createdAt: createdAt.toISOString(),
+          created_at: created_at.toISOString(),
         },
       ],
       meta: {
@@ -109,7 +109,7 @@ describe('UserCollectionPresenter unit tests', () => {
           id: 'e71c52a2-9710-4a96-a08e-144af4209b5d',
           name: 'test name',
           email: 'a@a.com',
-          createdAt: createdAt.toISOString(),
+          created_at: created_at.toISOString(),
         },
       ],
       meta: {

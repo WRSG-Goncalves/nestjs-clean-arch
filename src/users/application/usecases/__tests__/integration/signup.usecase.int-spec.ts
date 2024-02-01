@@ -40,6 +40,6 @@ describe('SignupUseCase integration tests', () => {
     }
     const output = await sut.execute(props)
     expect(output.id).toBeDefined()
-    expect(output.createdAt).toBeInstanceOf(Date)
+    expect(output.created_at).toBeInstanceOf(Date)
   })
 })

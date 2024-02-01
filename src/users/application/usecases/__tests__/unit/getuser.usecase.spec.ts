@@ -31,7 +31,7 @@ describe('GetUserUseCase unit tests', () => {
       name: items[0].name,
       email: items[0].email,
       password: items[0].password,
-      createdAt: items[0].createdAt,
+      created_at: items[0].created_at,
     })
   })
 })

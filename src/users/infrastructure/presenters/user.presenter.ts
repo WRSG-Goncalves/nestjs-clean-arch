@@ -16,13 +16,13 @@ export class UserPresenter {
 
   @ApiProperty({ description: 'Data de criação do usuário' })
   @Transform(({ value }: { value: Date }) => value.toISOString())
-  createdAt: Date
+  created_at: Date
 
   constructor(output: UserOutput) {
     this.id = output.id
     this.name = output.name
     this.email = output.email
-    this.createdAt = output.createdAt
+    this.created_at = output.created_at
   }
 }
 

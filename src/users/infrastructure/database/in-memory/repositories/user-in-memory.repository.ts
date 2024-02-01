@@ -9,7 +9,7 @@ export class UserInMemoryRepository
   extends InMemorySearchableRepository<UserEntity>
   implements UserRepository.Repository
 {
-  sortableFields: string[] = ['name', 'createdAt']
+  sortableFields: string[] = ['name', 'created_at']
 
   async findByEmail(email: string): Promise<UserEntity> {
     const entity = this.items.find(item => item.email === email)
@@ -44,7 +44,7 @@ export class UserInMemoryRepository
     sortDir: SortDirection | null,
   ): Promise<UserEntity[]> {
     return !sort
-      ? super.applySort(items, 'createdAt', 'desc')
+      ? super.applySort(items, 'created_at', 'desc')
       : super.applySort(items, sort, sortDir)
   }
 }

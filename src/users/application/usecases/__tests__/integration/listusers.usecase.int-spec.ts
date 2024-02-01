@@ -31,8 +31,8 @@ describe('ListUsersUseCase integration tests', () => {
     await module.close()
   })
 
-  it('should return the users ordered by createdAt', async () => {
-    const createdAt = new Date()
+  it('should return the users ordered by created_at', async () => {
+    const created_at = new Date()
     const entities: UserEntity[] = []
     const arrange = Array(3).fill(UserDataBuilder({}))
     arrange.forEach((element, index) => {
@@ -40,7 +40,7 @@ describe('ListUsersUseCase integration tests', () => {
         new UserEntity({
           ...element,
           email: `test${index}@mail.com`,
-          createdAt: new Date(createdAt.getTime() + index),
+          created_at: new Date(created_at.getTime() + index),
         }),
       )
     })
@@ -60,14 +60,14 @@ describe('ListUsersUseCase integration tests', () => {
   })
 
   it('should returns output using filter, sort and paginate', async () => {
-    const createdAt = new Date()
+    const created_at = new Date()
     const entities: UserEntity[] = []
     const arrange = ['test', 'a', 'TEST', 'b', 'TeSt']
     arrange.forEach((element, index) => {
       entities.push(
         new UserEntity({
           ...UserDataBuilder({ name: element }),
-          createdAt: new Date(createdAt.getTime() + index),
+          created_at: new Date(created_at.getTime() + index),
         }),
       )
     })

@@ -146,7 +146,7 @@ describe('UserPrismaRepository integration tests', () => {
 
   describe('search method tests', () => {
     it('should apply only pagination when the other params are null', async () => {
-      const createdAt = new Date()
+      const created_at = new Date()
       const entities: UserEntity[] = []
       const arrange = Array(16).fill(UserDataBuilder({}))
       arrange.forEach((element, index) => {
@@ -154,7 +154,7 @@ describe('UserPrismaRepository integration tests', () => {
           new UserEntity({
             ...element,
             email: `test${index}@mail.com`,
-            createdAt: new Date(createdAt.getTime() + index),
+            created_at: new Date(created_at.getTime() + index),
           }),
         )
       })
@@ -178,14 +178,14 @@ describe('UserPrismaRepository integration tests', () => {
     })
 
     it('should search using filter, sort and paginate', async () => {
-      const createdAt = new Date()
+      const created_at = new Date()
       const entities: UserEntity[] = []
       const arrange = ['test', 'a', 'TEST', 'b', 'TeSt']
       arrange.forEach((element, index) => {
         entities.push(
           new UserEntity({
             ...UserDataBuilder({ name: element }),
-            createdAt: new Date(createdAt.getTime() + index),
+            created_at: new Date(created_at.getTime() + index),
           }),
         )
       })

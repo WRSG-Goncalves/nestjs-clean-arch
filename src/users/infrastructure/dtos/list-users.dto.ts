@@ -13,7 +13,8 @@ export class ListUsersDto implements ListUsersUseCase.Input {
   perPage?: number
 
   @ApiPropertyOptional({
-    description: 'Coluna definida para ordenar os dados: "name" ou "createdAt"',
+    description:
+      'Coluna definida para ordenar os dados: "name" ou "created_at"',
   })
   @IsOptional()
   sort?: string

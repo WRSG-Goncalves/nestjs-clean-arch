@@ -38,7 +38,7 @@ describe('UpdateUserUseCase unit tests', () => {
       name: 'new name',
       email: items[0].email,
       password: items[0].password,
-      createdAt: items[0].createdAt,
+      created_at: items[0].created_at,
     })
   })
 })

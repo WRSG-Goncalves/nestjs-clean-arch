@@ -28,10 +28,10 @@ export class UserRules {
 
   @IsDate()
   @IsOptional()
-  createdAt?: Date
+  created_at?: Date
 
-  constructor({ email, name, password, createdAt }: UserProps) {
-    Object.assign(this, { email, name, password, createdAt })
+  constructor({ email, name, password, created_at }: UserProps) {
+    Object.assign(this, { email, name, password, created_at })
   }
 }
 

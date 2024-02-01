@@ -1,45 +1,49 @@
-import { PrismaClient, User } from '@prisma/client'
-import { UserModelMapper } from '../../user-model.mapper'
-import { ValidationError } from '@/shared/domain/errors/validation-error'
-import { UserEntity } from '@/users/domain/entities/user.entity'
-import { setupPrismaTests } from '@/shared/infrastructure/database/prisma/testing/setup-prisma-tests'
+import { PrismaClient } from '@prisma/client'
 
-describe('UserModelMapper integration tests', () => {
-  let prismaService: PrismaClient
-  let props: any
+import { Test, TestingModule } from '@nestjs/testing'
+import { setupPrismaTests } from '@/shared/infrastructure/database/prisma/testing/setup-prisma-tests'
+import { DatabaseModule } from '@/shared/infrastructure/database/database.module'
+import { NotFoundError } from '@/shared/domain/errors/not-found-error'
+import { UserEntity } from '@/users/domain/entities/user.entity'
+import { UserDataBuilder } from '@/users/domain/testing/helpers/user-data-builder'
+import { UserPrismaRepository } from '../../../repositories/user-prisma.repository'
+
+describe('UserPrismaRepository integration tests', () => {
+  const prismaService = new PrismaClient()
+  let sut: UserPrismaRepository
+  let module: TestingModule
 
   beforeAll(async () => {
     setupPrismaTests()
-    prismaService = new PrismaClient()
-    await prismaService.$connect()
+    module = await Test.createTestingModule({
+      imports: [DatabaseModule.forTest(prismaService)],
+    }).compile()
   })
+
+  // beforeAll(async () => {
+  //   setupPrismaTests()
+  //   prismaService = new PrismaClient()
+  //   await prismaService.$connect()
+  // }, 10000)
 
   beforeEach(async () => {
+    sut = new UserPrismaRepository(prismaService as any)
     await prismaService.user.deleteMany()
-    props = {
-      id: 'd4255494-f981-4d26-a2a1-35d3f5b8d36a',
-      name: 'Test name',
-      email: 'a@a.com',
-      password: 'TestPassword123',
-      createdAt: new Date(),
-    }
   })
 
-  afterAll(async () => {
-    await prismaService.$disconnect()
+  it('should throws error when entity not found', async () => {
+    expect(() => sut.findById('FakeId')).rejects.toThrow(
+      new NotFoundError('UserModel not found usind ID FakeId'),
+    )
   })
 
-  it('should throws error when user model is invalid', async () => {
-    const model: User = Object.assign(props, { name: null })
-    expect(() => UserModelMapper.toEntity(model)).toThrowError(ValidationError)
-  })
-
-  it('should convert a user model to a user entity', async () => {
-    const model: User = await prismaService.user.create({
-      data: props,
+  it('should finds a entity by id', async () => {
+    const entity = new UserEntity(UserDataBuilder({}))
+    const newUser = await prismaService.user.create({
+      data: entity.toJSON(),
     })
-    const sut = UserModelMapper.toEntity(model)
-    expect(sut).toBeInstanceOf(UserEntity)
-    expect(sut.toJSON()).toStrictEqual(props)
+
+    const output = await sut.findById(newUser.id)
+    expect(output.toJSON()).toStrictEqual(entity.toJSON())
   })
 })
